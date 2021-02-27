@@ -33,16 +33,10 @@ const TransitionGroupEx = styled(TransitionGroup)`
 
 const Section = styled.section`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
-  padding-top: 4rem;
-  padding-bottom: 1rem;
-
-  @media screen and (max-width: 1024px) {
-    padding-top: 0;
-  }
 `;
 
 const Router: React.FC = () => {
