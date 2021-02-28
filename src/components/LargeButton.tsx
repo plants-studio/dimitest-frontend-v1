@@ -16,9 +16,7 @@ const Button = styled.button<LargeButtonProps>`
 `;
 
 const LargeButton: React.FC<LargeButtonProps> = (props: LargeButtonProps) => (
-  <>
-    <Button type="button" {...props} />
-  </>
+  <Button type="button" {...props} />
 );
 
 export default LargeButton;
