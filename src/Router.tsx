@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Result from './pages/Result';
+import TermsOfService from './pages/TermsOfService';
 
 const Container = styled.div`
   .enter {
@@ -50,6 +51,7 @@ const Router: React.FC = () => {
             <Switch location={location}>
               <Route exact path="/" component={Home} />
               <Route path="/result" component={Result} />
+              <Route path="/tos" component={TermsOfService} />
               <Route component={NotFound} />
             </Switch>
           </Section>
