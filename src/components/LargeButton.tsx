@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { LargeButtonProps } from '../types';
 
 const Button = styled.button<LargeButtonProps>`
-  max-width: 283px;
+  max-width: 295px;
   background-color: #70c67e;
   border: none;
   width: 80%;
