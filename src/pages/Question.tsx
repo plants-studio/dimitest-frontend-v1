@@ -23,7 +23,6 @@ const Container = styled.div`
   max-width: 288px;
   width: 80%;
   height: 100%;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
@@ -76,13 +75,15 @@ const Question: React.FC = () => {
           result = [];
         }
       } else {
-        axios.post('http://api.dimitest.me/api/question/result', {
-          result,
-          name,
-          gender,
-        }).then((res) => {
-          console.log(res);
-        });
+        axios
+          .post('http://api.dimitest.me/api/question/result', {
+            result,
+            name,
+            gender,
+          })
+          .then((res) => {
+            console.log(res);
+          });
       }
     }
   };
@@ -90,10 +91,11 @@ const Question: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <ProgressBar value={value} maxValue={maxValue} />
-        <Text>{text}</Text>
+        <ProgressBar style={{ marginTop: '50px' }} value={value} maxValue={maxValue} />
+        <Text style={{ marginTop: '20vh', marginBottom: '20vh' }}>{text}</Text>
         {answer.map((a, i) => (
           <ChoiceButton
+            style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
             onClick={() => {
               result.push(questionList.current[value].answer[i].score);
               result.flat();

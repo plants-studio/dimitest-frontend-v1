@@ -3,6 +3,13 @@ import styled from 'styled-components';
 
 import { ProgressBarProps } from '../types';
 
+const Container = styled.span`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Label = styled.span`
   font-family: 'NEXON Football Gothic B';
   font-size: 0.875rem;
@@ -14,7 +21,7 @@ const Label = styled.span`
 
 const Background = styled.div`
   background-color: #eaeaea;
-  width: 80%;
+  width: 100%;
   height: 5px;
   border-radius: 3px;
 `;
@@ -27,7 +34,7 @@ const Bar = styled.div`
 `;
 
 const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
-  const { value, maxValue } = props;
+  const { value, maxValue, style } = props;
   const bar = useRef<HTMLDivElement>(null);
   const label = useRef<HTMLSpanElement>(null);
 
@@ -37,7 +44,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   }, [value]);
 
   return (
-    <>
+    <Container style={style}>
       <Background>
         <Bar ref={bar} />
       </Background>
@@ -47,7 +54,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
         /
         {maxValue}
       </Label>
-    </>
+    </Container>
   );
 };
 
