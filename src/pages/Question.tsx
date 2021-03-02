@@ -40,7 +40,7 @@ const Question: React.FC = () => {
 
   useEffect(() => {
     chapter = 1;
-    axios.post('http://api.dimitest.me/api/question/ch1').then((data) => {
+    axios.post('https://api.dimitest.me/api/question/ch1').then((data) => {
       questionList.current = data.data.data;
       setText(questionList.current[0].question);
       setAnswer(questionList.current[0].answer.map((v) => v.text));
@@ -57,7 +57,7 @@ const Question: React.FC = () => {
       chapter += 0.5;
 
       if (chapter === 1.5 || chapter === 2) {
-        axios.post('http://api.dimitest.me/api/question/ch2', { result }).then((data) => {
+        axios.post('https://api.dimitest.me/api/question/ch2', { result }).then((data) => {
           questionList.current = questionList.current.concat(data.data.data);
           setText(questionList.current[refValue.current].question);
           setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
@@ -66,7 +66,7 @@ const Question: React.FC = () => {
           result = [];
         }
       } else if (chapter === 2.5 || chapter === 3) {
-        axios.post('http://api.dimitest.me/api/question/ch3', { result }).then((data) => {
+        axios.post('https://api.dimitest.me/api/question/ch3', { result }).then((data) => {
           questionList.current = questionList.current.concat(data.data.data);
           setText(questionList.current[refValue.current].question);
           setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
@@ -76,7 +76,7 @@ const Question: React.FC = () => {
         }
       } else {
         axios
-          .post('http://api.dimitest.me/api/question/result', {
+          .post('https://api.dimitest.me/api/question/result', {
             result,
             name,
             gender,
