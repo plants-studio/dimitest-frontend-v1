@@ -5,7 +5,9 @@ import styled from 'styled-components';
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Question from './pages/Question';
 import Result from './pages/Result';
+import TermsOfService from './pages/TermsOfService';
 
 const Container = styled.div`
   .enter {
@@ -34,15 +36,9 @@ const TransitionGroupEx = styled(TransitionGroup)`
 const Section = styled.section`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
-  padding-top: 4rem;
-  padding-bottom: 1rem;
-
-  @media screen and (max-width: 1024px) {
-    padding-top: 0;
-  }
 `;
 
 const Router: React.FC = () => {
@@ -55,7 +51,9 @@ const Router: React.FC = () => {
           <Section>
             <Switch location={location}>
               <Route exact path="/" component={Home} />
-              <Route path="/result" component={Result} />
+              <Route path="/question" component={Question} />
+              <Route path="/result/:tendency" component={Result} />
+              <Route path="/tos" component={TermsOfService} />
               <Route component={NotFound} />
             </Switch>
           </Section>
