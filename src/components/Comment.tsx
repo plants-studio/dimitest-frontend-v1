@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { CommentProps } from '../types';
 
 const Container = styled.div<CommentProps>`
-  max-width: 290px;
-  width: 80%;
+  width: 100%;
   height: 1.5625rem;
   font-family: 'NEXON Football Gothic L';
   font-size: 0.875rem;

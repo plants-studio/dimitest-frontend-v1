@@ -140,6 +140,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #ffffff;
+    background-image: url('/images/background.png');
   }
 
   * {

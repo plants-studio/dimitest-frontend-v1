@@ -10,6 +10,7 @@ const Text = styled.div<HeaderProps>`
     || (props.size === 'Small' && '0.625rem')};
   font-weight: ${(props: HeaderProps) => (props.size === 'Small' ? 'bold' : 'normal')};
   color: ${(props: HeaderProps) => props.size !== 'Large' && '#CBCBCB'};
+  text-align: center;
 `;
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => <Text {...props} />;

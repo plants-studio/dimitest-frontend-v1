@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Question from './pages/Question';
 import Result from './pages/Result';
 import TermsOfService from './pages/TermsOfService';
 
@@ -50,7 +51,8 @@ const Router: React.FC = () => {
           <Section>
             <Switch location={location}>
               <Route exact path="/" component={Home} />
-              <Route path="/result" component={Result} />
+              <Route path="/question" component={Question} />
+              <Route path="/result/:tendency" component={Result} />
               <Route path="/tos" component={TermsOfService} />
               <Route component={NotFound} />
             </Switch>

@@ -1,37 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import { BarProps } from '../types';
+import { ProgressBarProps } from '../types';
 
 const Label = styled.span`
   font-family: 'NEXON Football Gothic B';
   font-size: 0.875rem;
   color: #eaeaea;
+  margin-left: auto;
+  margin-right: 1.75rem;
+  margin-top: 0.4rem;
 `;
 
 const Background = styled.div`
   background-color: #eaeaea;
-  max-width: 295px; 
-  max-width: 295px; 
   width: 80%;
   height: 5px;
   border-radius: 3px;
 `;
 
-const Bar = styled.div<BarProps>`
+const Bar = styled.div`
   background-color: #70c67e;
-  max-width: 295px;
-  width: 80%;
   height: 5px;
   border-radius: 3px;
-  transform: translateX(${(props: BarProps) => (props.value / props.maxValue) * 100}%);
+  transition: width 0.3s ease-out;
 `;
 
-const ProgressBar: React.FC = () => {
-  const [value, setValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(0);
+const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+  const { value, maxValue } = props;
+  const bar = useRef<HTMLDivElement>(null);
+  const label = useRef<HTMLSpanElement>(null);
 
-  return <></>;
+  useEffect(() => {
+    bar.current!.style.width = `${(value / maxValue) * 100}%`;
+    label.current!.textContent = `${value} / ${maxValue}`;
+  }, [value]);
+
+  return (
+    <>
+      <Background>
+        <Bar ref={bar} />
+      </Background>
+      <Label ref={label}>
+        {value}
+        {' '}
+        /
+        {maxValue}
+      </Label>
+    </>
+  );
 };
 
 export default ProgressBar;

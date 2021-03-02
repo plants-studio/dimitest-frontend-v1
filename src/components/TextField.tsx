@@ -1,11 +1,33 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const TextField: React.FC = () => (
-  <>
-    {
-      // STUB Generated default code
-    }
-  </>
+import { TextFieldProps } from '../types';
+
+const Input = styled.input`
+  background-color: transparent;
+  border: solid 1px #cbcbcb;
+  width: 100%;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-family: 'NEXON Football Gothic B';
+  transition: border 0.3s ease, color 0.3s ease;
+  text-align: center;
+
+  &::placeholder {
+    color: #cbcbcb;
+  }
+
+  &:focus {
+    border: solid 1px #70c67e;
+    color: #70c67e;
+  }
+`;
+
+const TextField: React.FC<TextFieldProps> = React.forwardRef(
+  (props: TextFieldProps, ref: React.ForwardedRef<HTMLInputElement>) => (
+    <Input type="text" ref={ref} {...props} />
+  ),
 );
 
 export default TextField;
