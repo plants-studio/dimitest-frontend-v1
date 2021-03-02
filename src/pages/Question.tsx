@@ -95,8 +95,8 @@ const Question: React.FC = () => {
         {answer.map((a, i) => (
           <ChoiceButton
             onClick={() => {
-              result = result.concat(questionList.current[value].answer[i].score);
-              console.log(result);
+              result.push(questionList.current[value].answer[i].score);
+              result.flat();
               next();
             }}
           >
