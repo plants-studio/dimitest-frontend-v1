@@ -135,6 +135,7 @@ export type QuestionList = {
         | 'marketer'
         | 'customer representative';
       // #endregion
+      num: number;
     }[];
   }[];
 }[];
