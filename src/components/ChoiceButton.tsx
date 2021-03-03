@@ -13,6 +13,7 @@ const Button = styled.button<ChoiceButtonProps>`
   border-radius: 5px;
   font-family: 'NanumSquare';
   transition: border 0.3s ease, color 0.3s ease;
+  outline: none;
 
   &:focus {
     border: solid 1px #70c67e;

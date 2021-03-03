@@ -13,6 +13,7 @@ const Input = styled.input`
   font-family: 'NEXON Football Gothic B';
   transition: border 0.3s ease, color 0.3s ease;
   text-align: center;
+  outline: none;
 
   &::placeholder {
     color: #cbcbcb;
