@@ -109,10 +109,10 @@ const Home: React.FC = () => {
             <Comment>
               총
               {' '}
-              <Highlight>24문항</Highlight>
+              <Highlight>10문항</Highlight>
               으로 약
               {' '}
-              <Highlight>8분</Highlight>
+              <Highlight>3분</Highlight>
               의 시간이 소요됩니다.
             </Comment>
             <Comment>

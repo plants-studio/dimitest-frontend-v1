@@ -28,18 +28,17 @@ const Container = styled.div`
 `;
 
 const Question: React.FC = () => {
-  const maxValue = 24;
+  const maxValue = 10;
   const [value, setValue] = useState(0);
   const [text, setText] = useState('');
   const [answer, setAnswer] = useState(['', '']);
   const [{ name, gender }] = useCookies(['name', 'gender']);
   const questionList = useRef<QuestionList>([]);
   const refValue = useRef<number>(0);
-  let result: any[] = [];
-  let chapter = 0;
+  const result = useRef<any[]>([]);
+  const chapter = useRef<number>(1);
 
   useEffect(() => {
-    chapter = 1;
     axios.post('https://api.dimitest.me/api/question/ch1').then((data) => {
       questionList.current = data.data.data;
       setText(questionList.current[0].question);
@@ -54,30 +53,32 @@ const Question: React.FC = () => {
       setText(questionList.current[refValue.current].question);
       setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
     } catch {
-      chapter += 0.5;
+      if (
+        !(
+          chapter.current === 2
+          && result.current.findIndex(
+            (v: any) => v.type === 'developer' || v.type === 'designer' || v.type === 'manager',
+          ) !== -1
+        )
+      ) {
+        chapter.current += 1;
+      }
 
-      if (chapter === 1.5 || chapter === 2) {
-        axios.post('https://api.dimitest.me/api/question/ch2', { result }).then((data) => {
-          questionList.current = questionList.current.concat(data.data.data);
-          setText(questionList.current[refValue.current].question);
-          setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
-        });
-        if (chapter === 2) {
-          result = [];
-        }
-      } else if (chapter === 2.5 || chapter === 3) {
-        axios.post('https://api.dimitest.me/api/question/ch3', { result }).then((data) => {
-          questionList.current = questionList.current.concat(data.data.data);
-          setText(questionList.current[refValue.current].question);
-          setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
-        });
-        if (chapter === 3) {
-          result = [];
-        }
+      if (chapter.current !== 5) {
+        axios
+          .post(`https://api.dimitest.me/api/question/ch${chapter.current}`, {
+            result: result.current,
+          })
+          .then((data) => {
+            questionList.current = questionList.current.concat(data.data.data);
+            setText(questionList.current[refValue.current].question);
+            setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
+          });
+        result.current = [];
       } else {
         axios
           .post('https://api.dimitest.me/api/question/result', {
-            result,
+            result: result.current,
             name,
             gender,
           })
@@ -97,9 +98,12 @@ const Question: React.FC = () => {
           <ChoiceButton
             style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
             onClick={() => {
-              result.push(questionList.current[value].answer[i].score);
-              result.flat();
-              next();
+              if (questionList.current[value].answer[i].score[0].num === 0) {
+                next();
+              } else {
+                result.current = result.current.concat(questionList.current[value].answer[i].score);
+                next();
+              }
             }}
           >
             {a}
