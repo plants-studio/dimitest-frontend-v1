@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   background-image: url('/images/school.png');
   background-repeat: no-repeat;
   background-position: bottom;
+
+  @media only screen and (max-width: 1024px) {
+    background-size: 100% auto;
+  }
 `;
 
 const Container = styled.div`
