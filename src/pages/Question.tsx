@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ChoiceButton from '../components/ChoiceButton';
@@ -36,13 +37,18 @@ const Question: React.FC = () => {
   const [value, setValue] = useState(0);
   const [text, setText] = useState('');
   const [answer, setAnswer] = useState(['', '']);
-  const [{ name, gender }] = useCookies(['name', 'gender']);
+  const [{ name, gender }, setCookie] = useCookies(['name', 'gender', 'result']);
   const questionList = useRef<QuestionList>([]);
   const refValue = useRef<number>(0);
   const result = useRef<any[]>([]);
   const chapter = useRef<number>(1);
+  const history = useHistory();
 
   useEffect(() => {
+    if (!name || !gender) {
+      history.push('/');
+      return;
+    }
     axios.post('https://api.dimitest.me/api/question/ch1').then((data) => {
       questionList.current = data.data.data;
       setText(questionList.current[0].question);
@@ -86,8 +92,8 @@ const Question: React.FC = () => {
             name,
             gender,
           })
-          .then((res) => {
-            console.log(res);
+          .then((data) => {
+            history.push(`/result/${data.data.data}`);
           });
       }
     }
@@ -106,6 +112,9 @@ const Question: React.FC = () => {
                 next();
               } else {
                 result.current = result.current.concat(questionList.current[value].answer[i].score);
+                if (result.current.length === 12) {
+                  setCookie('result', result.current);
+                }
                 next();
               }
             }}

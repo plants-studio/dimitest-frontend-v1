@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 export type LargeButtonProps = {
   children?: React.ReactNode;
@@ -49,93 +50,92 @@ export type QuestionList = {
   answer: {
     text: string;
     score: {
-      type: // #region base
-      | 'developer'
+      type:
+        | 'developer'
         | 'designer'
         | 'manager'
-        // #endregion
-
-        // #region developer
-        | 'p1'
-        | 'p2'
-        | 'p3'
-        | 'p4'
-        // #endregion
-
-        // #region designer
-        | 'd1'
-        | 'd2'
-        | 'd3'
-        | 'd4'
-        // #endregion
-
-        // #region manager
-        | 'm1'
-        | 'm2'
-        | 'm3'
-        | 'm4'
-        // #endregion
-
-        // #region p1
+        | 'pA'
+        | 'pB'
+        | 'dA'
+        | 'dB'
+        | 'mA'
+        | 'mB'
+        | 'pA1'
+        | 'pA2'
+        | 'pB1'
+        | 'pB2'
+        | 'dA1'
+        | 'dA2'
+        | 'dB1'
+        | 'dB2'
+        | 'mA1'
+        | 'mA2'
+        | 'mB1'
+        | 'mB2'
         | 'application developer'
         | 'game developer'
-        // #endregion
-
-        // #region p2
         | 'frontend developer'
         | 'mobile application developer'
-        // #endregion
-
-        // #region p3
         | 'machine learning engineer'
         | 'iot & robotics engineer'
-        // #endregion
-
-        // #region p4
         | 'information security professional'
         | 'backend developer'
-        // #endregion
-
-        // #region d1
         | 'illustrator'
         | 'editing designer'
-        // #endregion
-
-        // #region d2
         | 'product designer'
         | 'animator'
-        // #endregion
-
-        // #region d3
         | 'ui designer'
         | 'ux designer'
-        // #endregion
-
-        // #region d4
         | 'video designer'
         | 'computer graphics professor'
-        // #endregion
-
-        // #region m1
         | 'product manager'
         | 'business development manager'
-        // #endregion
-
-        // #region m2
         | 'business analyst'
         | 'finance manager'
-        // #endregion
-
-        // #region m3
         | 'communication manager'
         | 'personnel manager'
-        // #endregion
-
-        // #region m4
         | 'marketer'
         | 'customer representative';
-      // #endregion
       num: number;
     }[];
   }[];
 }[];
+
+export type ResultProps = RouteComponentProps & {
+  match: {
+    params: {
+      tendency:
+        | 'application developer'
+        | 'game developer'
+        | 'frontend developer'
+        | 'mobile application developer'
+        | 'machine learning engineer'
+        | 'iot & robotics engineer'
+        | 'information security professional'
+        | 'backend developer'
+        | 'illustrator'
+        | 'editing designer'
+        | 'product designer'
+        | 'animator'
+        | 'ui designer'
+        | 'ux designer'
+        | 'video designer'
+        | 'computer graphics professor'
+        | 'product manager'
+        | 'business development manager'
+        | 'business analyst'
+        | 'finance manager'
+        | 'communication manager'
+        | 'personnel manager'
+        | 'marketer'
+        | 'customer representative';
+    };
+  };
+};
+
+export type RowBoxGraphProps = {
+  developer: number;
+  designer: number;
+  manager: number;
+  style?: React.CSSProperties;
+}
