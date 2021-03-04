@@ -56,56 +56,100 @@ const Question: React.FC = () => {
     });
   }, []);
 
+  const tryable = (closure: Function, catchCallback: Function) => {
+    closure((callback: Function) => () => {
+      try {
+        callback();
+      } catch (e) {
+        catchCallback(e);
+      }
+    });
+  };
+
   const next = () => {
+    let worked = false;
+    const pages = document.getElementsByClassName('page');
     refValue.current += 1;
     setValue(refValue.current);
-    try {
-      setText(questionList.current[refValue.current].question);
-      setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
-    } catch {
-      if (
-        !(
-          chapter.current === 2
-          && result.current.findIndex(
-            (v: any) => v.type === 'developer' || v.type === 'designer' || v.type === 'manager',
-          ) !== -1
-        )
-      ) {
-        chapter.current += 1;
-      }
+    tryable(
+      (catchable: Function) => {
+        for (let i = 0; i < pages.length; i += 1) {
+          const page = pages[i] as HTMLInputElement;
+          page.blur();
+          page.style.transition = 'opacity 0.5s ease';
+          page.style.opacity = '0';
+          page.disabled = true;
+          setTimeout(
+            catchable(() => {
+              setText(questionList.current[refValue.current].question);
+              setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
+              page.style.opacity = '1';
+              page.disabled = false;
+            }),
+            500,
+          );
+        }
+      },
+      () => {
+        if (worked) {
+          return;
+        }
 
-      if (chapter.current !== 5) {
-        axios
-          .post(`https://api.dimitest.me/api/question/ch${chapter.current}`, {
-            result: result.current,
-          })
-          .then((data) => {
-            questionList.current = questionList.current.concat(data.data.data);
-            setText(questionList.current[refValue.current].question);
-            setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
-          });
-        result.current = [];
-      } else {
-        axios
-          .post('https://api.dimitest.me/api/question/result', {
-            result: result.current,
-            name,
-            gender,
-          })
-          .then((data) => {
-            history.push(`/result/${data.data.data}`);
-          });
-      }
-    }
+        if (
+          !(
+            chapter.current === 2
+            && result.current.findIndex(
+              (v: any) => v.type === 'developer' || v.type === 'designer' || v.type === 'manager',
+            ) !== -1
+          )
+        ) {
+          chapter.current += 1;
+        }
+
+        if (chapter.current !== 5) {
+          worked = true;
+          axios
+            .post(`https://api.dimitest.me/api/question/ch${chapter.current}`, {
+              result: result.current,
+            })
+            .then((data) => {
+              questionList.current = questionList.current.concat(data.data.data);
+              setText(questionList.current[refValue.current].question);
+              setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
+              for (let i = 0; i < pages.length; i += 1) {
+                const page = pages[i] as HTMLInputElement;
+                page.style.transition = 'opacity 0.5s ease';
+                page.style.opacity = '1';
+                page.disabled = false;
+              }
+              worked = false;
+            });
+          result.current = [];
+        } else {
+          axios
+            .post('https://api.dimitest.me/api/question/result', {
+              result: result.current,
+              name,
+              gender,
+            })
+            .then((data) => {
+              history.push(`/result/${data.data.data}`);
+            });
+        }
+      },
+    );
   };
 
   return (
     <Wrapper>
       <Container>
         <ProgressBar style={{ marginTop: '50px' }} value={value} maxValue={maxValue} />
-        <Text style={{ marginTop: '20vh', marginBottom: '20vh' }}>{text}</Text>
+        <Text className="page" style={{ marginTop: '20vh', marginBottom: '20vh' }}>
+          {text}
+        </Text>
         {answer.map((a, i) => (
           <ChoiceButton
+            className="page"
             style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
             onClick={() => {
               if (questionList.current[value].answer[i].score[0].num === 0) {
