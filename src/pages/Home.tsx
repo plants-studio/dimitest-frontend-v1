@@ -11,7 +11,7 @@ import TextField from '../components/TextField';
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   background-image: url('/images/school.svg');
   background-repeat: no-repeat;
