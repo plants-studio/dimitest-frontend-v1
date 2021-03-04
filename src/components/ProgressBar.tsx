@@ -15,7 +15,6 @@ const Label = styled.span`
   font-size: 0.875rem;
   color: #eaeaea;
   margin-left: auto;
-  margin-right: 1.75rem;
   margin-top: 0.4rem;
 `;
 

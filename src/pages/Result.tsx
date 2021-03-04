@@ -90,7 +90,12 @@ const Similar = styled.div`
 
 const Result: React.FC<ResultProps> = (props: ResultProps) => {
   const { match } = props;
-  const [{ name }] = useCookies(['name']);
+  const [{ name, result }] = useCookies(['name', 'result']);
+
+  const score: any = { developer: 0, designer: 0, manager: 0 };
+  result.forEach((v: any) => {
+    score[v.type] += v.num;
+  });
 
   return (
     <Wrapper>
@@ -103,7 +108,7 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
         <Type>{resultData[match.params.tendency].type}</Type>
         <Name>{resultData[match.params.tendency].name}</Name>
         <GraphSub>나의 IT성향 그래프</GraphSub>
-        <RowBoxGraph developer={3} designer={2} manager={7} style={{ marginBottom: '38px' }} />
+        <RowBoxGraph developer={score.developer} designer={score.designer} manager={score.manager} style={{ marginBottom: '38px' }} />
         <Description>{resultData[match.params.tendency].description}</Description>
         <SimilarSub>나와 관련있는 다른 IT성향은?</SimilarSub>
         <Similar>{resultData[match.params.tendency].similar.join(', ')}</Similar>

@@ -64,6 +64,7 @@ const Radio = styled.input`
   border-radius: 5px;
   margin: 0;
   margin-right: 0.3rem;
+  outline: none;
 
   &:checked {
     border: none;
@@ -159,8 +160,10 @@ const Home: React.FC = () => {
             if (!page) {
               setPage(true);
             } else if (name.current?.value === null || name.current?.value.match(/^ *$/) !== null) {
+              // eslint-disable-next-line
               alert('이름을 정확히 입력해주세요');
             } else if (!man.current?.checked && !woman.current?.checked) {
+              // eslint-disable-next-line
               alert('성별을 선택해주세요');
             } else {
               setCookie('name', name.current.value);

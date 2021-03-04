@@ -12,6 +12,7 @@ const Button = styled.button<LargeButtonProps>`
   color: #ffffff;
   border-radius: 5px;
   font-family: 'NEXON Football Gothic B';
+  cursor: pointer;
   outline: none;
 `;
 

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HeaderProps } from '../types';
 
 const Text = styled.div<HeaderProps>`
+  width: 100%;
   font-family: ${(props: HeaderProps) => (props.size === 'Large' ? 'NEXON Football Gothic B' : 'NanumSquare')};
   font-size: ${(props: HeaderProps) => (props.size === 'Large' && '1.6875rem')
     || (props.size === 'Medium' && '1rem')
