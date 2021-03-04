@@ -12,7 +12,7 @@ import { QuestionList } from '../types';
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100100vh;
   justify-content: center;
   background-image: url('/images/school.svg');
   background-repeat: no-repeat;
