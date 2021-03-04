@@ -23,6 +23,7 @@ export type ChoiceButtonProps = {
   onClick?: () => void;
   style?: React.CSSProperties;
   className?: string;
+  id?: string;
 };
 
 export type ProgressBarProps = {
@@ -140,4 +141,33 @@ export type RowBoxGraphProps = {
   designer: number;
   manager: number;
   style?: React.CSSProperties;
-}
+};
+
+export type KakaoShareButtonProps = {
+  name: string;
+  tendency:
+    | 'application developer'
+    | 'game developer'
+    | 'frontend developer'
+    | 'mobile application developer'
+    | 'machine learning engineer'
+    | 'iot & robotics engineer'
+    | 'information security professional'
+    | 'backend developer'
+    | 'illustrator'
+    | 'editing designer'
+    | 'product designer'
+    | 'animator'
+    | 'ui designer'
+    | 'ux designer'
+    | 'video designer'
+    | 'computer graphics professor'
+    | 'product manager'
+    | 'business development manager'
+    | 'business analyst'
+    | 'finance manager'
+    | 'communication manager'
+    | 'personnel manager'
+    | 'marketer'
+    | 'customer representative';
+};
