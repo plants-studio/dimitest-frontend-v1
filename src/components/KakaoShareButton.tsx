@@ -6,7 +6,6 @@ import ChoiceButton from './ChoiceButton';
 
 const KakaoShareButton: React.FC<KakaoShareButtonProps> = (props: KakaoShareButtonProps) => {
   useEffect(() => {
-    console.log(process.env.REACT_APP_KAKAO_KEY);
     createKakaoButton();
   }, []);
 
