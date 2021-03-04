@@ -96,7 +96,7 @@ const Home: React.FC = () => {
             <Header size="Large" style={{ marginBottom: '10px' }}>
               <Highlight>디미고인</Highlight>
               {' '}
-              TI성향 테스트
+              IT성향 테스트
             </Header>
             <Header size="Medium" style={{ marginBottom: '71px' }}>
               당신과 잘 어울리는 IT 직군은 무엇일까요?
