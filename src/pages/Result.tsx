@@ -69,20 +69,21 @@ const GraphSub = styled.div`
 
 const Description = styled.div`
   font-family: 'NanumSquare';
-  font-size: 1rem;
+  font-size: 0.875rem;
   margin-bottom: 52px;
   word-break: keep-all;
+  line-height: 1.2rem;
 `;
 
 const SimilarSub = styled.div`
   font-family: 'NanumSquare';
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 22px;
 `;
 
 const Similar = styled.div`
   font-family: 'NanumSquare';
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #868686;
   margin-bottom: 32px;
   word-break: keep-all;
