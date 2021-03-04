@@ -64,6 +64,7 @@ const Radio = styled.input`
   border-radius: 5px;
   margin: 0;
   margin-right: 0.3rem;
+  outline: none;
 
   &:checked {
     border: none;
