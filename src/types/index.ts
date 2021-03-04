@@ -22,6 +22,7 @@ export type ChoiceButtonProps = {
   children?: React.ReactNode;
   onClick?: () => void;
   style?: React.CSSProperties;
+  className?: string;
 };
 
 export type ProgressBarProps = {
@@ -39,6 +40,7 @@ export type TextFieldProps = {
 export type TextProps = {
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
 };
 
 export type QuestionList = {
