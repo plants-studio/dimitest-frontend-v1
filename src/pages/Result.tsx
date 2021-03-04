@@ -75,7 +75,7 @@ const Description = styled.div`
 `;
 
 const SimilarSub = styled.div`
-  font-size: 'NanumSquare';
+  font-family: 'NanumSquare';
   font-size: 0.875rem;
   margin-bottom: 22px;
 `;
