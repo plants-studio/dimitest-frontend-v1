@@ -12,7 +12,15 @@ import { QuestionList } from '../types';
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
+  background-image: url('/images/school.svg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  @media only screen and (max-width: 1024px) {
+    background-size: 100% auto;
+  }
 `;
 
 const Container = styled.div`
