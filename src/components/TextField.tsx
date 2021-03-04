@@ -14,6 +14,8 @@ const Input = styled.input`
   transition: border 0.3s ease, color 0.3s ease;
   text-align: center;
   outline: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 
   &::placeholder {
     color: #cbcbcb;
