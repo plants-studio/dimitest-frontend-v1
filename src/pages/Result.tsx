@@ -81,7 +81,7 @@ const SimilarSub = styled.div`
 `;
 
 const Similar = styled.div`
-  font-family: 'NanumSqaure';
+  font-family: 'NanumSquare';
   font-size: 1rem;
   color: #868686;
   margin-bottom: 32px;

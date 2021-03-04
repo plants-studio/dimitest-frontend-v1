@@ -29,7 +29,7 @@ const KakaoShareButton: React.FC<KakaoShareButtonProps> = (props: KakaoShareButt
         },
         buttons: [
           {
-            title: '웹으로 보기',
+            title: '나도 해보기',
             link: {
               mobileWebUrl: 'https://dimitest.me',
               webUrl: 'https://dimitest.me',
