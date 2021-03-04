@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 
 import ChoiceButton from '../components/ChoiceButton';
+import KakaoShareButton from '../components/KakaoShareButton';
 import RowBoxGraph from '../components/RowBoxGraph';
 import resultData from '../result.json';
 import { ResultProps } from '../types';
@@ -108,12 +109,18 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
         <Type>{resultData[match.params.tendency].type}</Type>
         <Name>{resultData[match.params.tendency].name}</Name>
         <GraphSub>나의 IT성향 그래프</GraphSub>
-        <RowBoxGraph developer={score.developer} designer={score.designer} manager={score.manager} style={{ marginBottom: '38px' }} />
+        <RowBoxGraph
+          developer={score.developer}
+          designer={score.designer}
+          manager={score.manager}
+          style={{ marginBottom: '38px' }}
+        />
         <Description>{resultData[match.params.tendency].description}</Description>
         <SimilarSub>나와 관련있는 다른 IT성향은?</SimilarSub>
         <Similar>{resultData[match.params.tendency].similar.join(', ')}</Similar>
         <ChoiceButton style={{ marginBottom: '5px' }}>선배님과 익명으로 상담해보기</ChoiceButton>
-        <ChoiceButton style={{ marginBottom: '106px' }}>친구들에게 내 결과 공유하기</ChoiceButton>
+        {/* <ChoiceButton style={{ marginBottom: '106px' }}>친구들에게 내 결과 공유하기</ChoiceButton> */}
+        <KakaoShareButton name={name} tendency={match.params.tendency} />
       </Container>
     </Wrapper>
   );
