@@ -15,7 +15,6 @@ const Input = styled.input`
   text-align: center;
   outline: none;
   -webkit-appearance: none;
-  -webkit-border-radius: 0;
 
   &::placeholder {
     color: #cbcbcb;

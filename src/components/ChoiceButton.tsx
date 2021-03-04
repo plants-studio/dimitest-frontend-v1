@@ -15,11 +15,6 @@ const Button = styled.button<ChoiceButtonProps>`
   transition: border 0.3s ease, color 0.3s ease;
   outline: none;
   cursor: pointer;
-
-  &:focus {
-    border: solid 1px #70c67e;
-    color: #70c67e;
-  }
 `;
 
 const ChoiceButton: React.FC<ChoiceButtonProps> = (props: ChoiceButtonProps) => <Button type="button" {...props} />;
