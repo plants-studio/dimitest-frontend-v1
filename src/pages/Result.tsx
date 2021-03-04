@@ -2,7 +2,6 @@ import React from 'react';
 import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 
-import ChoiceButton from '../components/ChoiceButton';
 import KakaoShareButton from '../components/KakaoShareButton';
 import RowBoxGraph from '../components/RowBoxGraph';
 import resultData from '../result.json';
