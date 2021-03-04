@@ -14,9 +14,12 @@ const Button = styled.button<ChoiceButtonProps>`
   font-family: 'NanumSquare';
   transition: border 0.3s ease, color 0.3s ease;
   outline: none;
+  word-break: keep-all;
   cursor: pointer;
 `;
 
-const ChoiceButton: React.FC<ChoiceButtonProps> = (props: ChoiceButtonProps) => <Button type="button" {...props} />;
+const ChoiceButton: React.FC<ChoiceButtonProps> = (props: ChoiceButtonProps) => (
+  <Button type="button" {...props} />
+);
 
 export default ChoiceButton;
