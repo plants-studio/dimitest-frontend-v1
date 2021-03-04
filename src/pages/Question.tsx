@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { isMobile } from 'react-device-detect';
-import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -45,15 +43,11 @@ const Question: React.FC = () => {
   const result = useRef<any[]>([]);
   const chapter = useRef<number>(1);
   const history = useHistory();
-  const handle = useFullScreenHandle();
 
   useEffect(() => {
     if (!name || !gender) {
       history.push('/');
       return;
-    }
-    if (isMobile) {
-      handle.enter();
     }
     axios.post('https://api.dimitest.me/api/question/ch1').then((data) => {
       questionList.current = data.data.data;
@@ -147,37 +141,33 @@ const Question: React.FC = () => {
   };
 
   return (
-    <FullScreen handle={handle}>
-      <Wrapper>
-        <Container>
-          <ProgressBar style={{ marginTop: '50px' }} value={value} maxValue={maxValue} />
-          <Text className="page" style={{ marginTop: '20vh', marginBottom: '20vh' }}>
-            {text}
-          </Text>
-          {answer.map((a, i) => (
-            <ChoiceButton
-              className="page"
-              style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
-              onClick={() => {
-                if (questionList.current[value].answer[i].score[0].num === 0) {
-                  next();
-                } else {
-                  result.current = result.current.concat(
-                    questionList.current[value].answer[i].score,
-                  );
-                  if (result.current.length === 12) {
-                    setCookie('result', result.current);
-                  }
-                  next();
+    <Wrapper>
+      <Container>
+        <ProgressBar style={{ marginTop: '50px' }} value={value} maxValue={maxValue} />
+        <Text className="page" style={{ marginTop: '20vh', marginBottom: '20vh' }}>
+          {text}
+        </Text>
+        {answer.map((a, i) => (
+          <ChoiceButton
+            className="page"
+            style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
+            onClick={() => {
+              if (questionList.current[value].answer[i].score[0].num === 0) {
+                next();
+              } else {
+                result.current = result.current.concat(questionList.current[value].answer[i].score);
+                if (result.current.length === 12) {
+                  setCookie('result', result.current);
                 }
-              }}
-            >
-              {a}
-            </ChoiceButton>
-          ))}
-        </Container>
-      </Wrapper>
-    </FullScreen>
+                next();
+              }
+            }}
+          >
+            {a}
+          </ChoiceButton>
+        ))}
+      </Container>
+    </Wrapper>
   );
 };
 
