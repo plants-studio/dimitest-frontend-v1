@@ -137,7 +137,7 @@
   },
   "communication manager": {
     "type": "기획자",
-    "name": "커뮤니케이션 매니저",
+    "name": "커뮤니티 매니저",
     "description": "",
     "similar": ["인사 담당자", "마케터", "고객 담당자"]
   },
@@ -145,18 +145,18 @@
     "type": "기획자",
     "name": "인사 담당자",
     "description": "",
-    "similar": ["커뮤니케이션 매니저", "마케터", "고객 담당자"]
+    "similar": ["커뮤니티 매니저", "마케터", "고객 담당자"]
   },
   "marketer": {
     "type": "기획자",
     "name": "마케터",
     "description": "",
-    "similar": ["커뮤니케이션 매니저", "인사 담당자", "고객 담당자"]
+    "similar": ["커뮤니티 매니저", "인사 담당자", "고객 담당자"]
   },
   "customer representative": {
     "type": "기획자",
     "name": "고객 담당자",
     "description": "",
-    "similar": ["커뮤니케이션 매니저", "인사 담당자", "마케터"]
+    "similar": ["커뮤니티 매니저", "인사 담당자", "마케터"]
   }
 }
