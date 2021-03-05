@@ -99,10 +99,12 @@ const Similar = styled.div`
 
 const ReStart = styled(Link)`
   color: #9fb0c4;
-  font-fmaily: 'NanumSquare';
+  font-family: 'NanumSquare';
   display: flex;
   margin-bottom: 32px;
   text-decoration: none;
+  font-size: 1.25rem;
+  transform: scale(0.8);
 `;
 
 const Result: React.FC<ResultProps> = (props: ResultProps) => {
@@ -135,7 +137,7 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
         <SimilarSub>나와 관련있는 다른 IT성향은?</SimilarSub>
         <Similar>{resultData[match.params.tendency].similar.join(', ')}</Similar>
         <ReStart to="/">
-          <img src="/images/restart.png" alt="restart" />
+          <img src="/images/restart.png" alt="restart" style={{ marginRight: '5px' }} />
           다시하기
         </ReStart>
         <KakaoShareButton name={name} tendency={match.params.tendency} />
