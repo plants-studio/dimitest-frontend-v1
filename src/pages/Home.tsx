@@ -33,7 +33,7 @@ const Container = styled.div`
 `;
 
 const Highlight = styled.span`
-  color: #70c67e;
+  color: #4fcb63;
 `;
 
 const LinkEx = styled(Link)`
@@ -68,7 +68,7 @@ const Radio = styled.input`
 
   &:checked {
     border: none;
-    background-color: #70c67e;
+    background-color: #4fcb63;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url('/images/checked.png');
