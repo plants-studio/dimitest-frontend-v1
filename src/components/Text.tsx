@@ -5,7 +5,7 @@ import { TextProps } from '../types';
 
 const Div = styled.div`
   font-family: 'NEXON Football Gothic B';
-  font-size: 1rem;
+  font-size: 1.125rem;
   width: 100%;
   text-align: center;
   word-break: keep-all;
