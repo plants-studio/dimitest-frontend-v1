@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { LargeButtonProps } from '../types';
 
 const Button = styled.button<LargeButtonProps>`
-  background-color: #70c67e;
+  background-color: #4fcb63;
   border: none;
   width: 100%;
   height: 50px;
@@ -14,6 +14,7 @@ const Button = styled.button<LargeButtonProps>`
   font-family: 'NEXON Football Gothic B';
   cursor: pointer;
   outline: none;
+  padding: 0;
 `;
 
 const LargeButton: React.FC<LargeButtonProps> = (props: LargeButtonProps) => (
