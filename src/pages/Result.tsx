@@ -76,8 +76,8 @@ const Description = styled.div`
   font-family: 'NanumSquare';
   font-size: 0.875rem;
   margin-bottom: 52px;
-  white-space: pre;
-  line-height: 1.2rem;
+  work-break: keep-all;
+  line-height: 1.25rem;
   width: 100%;
 `;
 
