@@ -66,7 +66,7 @@ const Question: React.FC = () => {
     });
   };
 
-  const next = (index: number) => {
+  const next = () => {
     let worked = false;
     const pages: any = document.getElementsByClassName('page');
     refValue.current += 1;
@@ -76,11 +76,6 @@ const Question: React.FC = () => {
         for (let i = 0; i < pages.length; i += 1) {
           const page = pages[i];
           page.blur();
-          page.style.transition = 'opacity 0.5s ease, color 0.3s ease, border 0.3s ease';
-          if (i !== 0) {
-            pages[1 + index].style.color = '#70c67e';
-            pages[1 + index].style.border = 'solid 1px #70c67e';
-          }
           page.disabled = true;
           setTimeout(() => {
             page.style.opacity = '0';
@@ -89,10 +84,6 @@ const Question: React.FC = () => {
                 setText(questionList.current[refValue.current].question);
                 setAnswer(questionList.current[refValue.current].answer.map((v) => v.text));
                 page.style.opacity = '1';
-                if (i !== 0) {
-                  pages[1 + index].style.color = '#9fb0c4';
-                  pages[1 + index].style.border = 'solid 1px #9fb0c4';
-                }
                 page.disabled = false;
               }),
               500,
@@ -129,10 +120,6 @@ const Question: React.FC = () => {
               for (let i = 0; i < pages.length; i += 1) {
                 const page = pages[i];
                 page.style.opacity = '1';
-                if (i !== 0) {
-                  pages[1 + index].style.color = '#9fb0c4';
-                  pages[1 + index].style.border = 'solid 1px #9fb0c4';
-                }
                 page.disabled = false;
               }
               worked = false;
@@ -166,13 +153,13 @@ const Question: React.FC = () => {
             style={{ marginBottom: i === answer.length ? '200px' : '10px' }}
             onClick={() => {
               if (questionList.current[value].answer[i].score[0].num === 0) {
-                next(i);
+                next();
               } else {
                 result.current = result.current.concat(questionList.current[value].answer[i].score);
                 if (result.current.length === 12) {
                   setCookie('result', result.current);
                 }
-                next(i);
+                next();
               }
             }}
           >
