@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import { ChoiceButtonProps } from '../types';
@@ -18,10 +18,29 @@ const Button = styled.button<ChoiceButtonProps>`
   word-break: keep-all;
   line-height: 1.25rem;
   cursor: pointer;
+  transition: opacity 0.5s ease, color 0.3s ease, border 0.3s ease;
 `;
 
-const ChoiceButton: React.FC<ChoiceButtonProps> = (props: ChoiceButtonProps) => (
-  <Button type="button" {...props} />
-);
+const ChoiceButton: React.FC<ChoiceButtonProps> = (props: ChoiceButtonProps) => {
+  const { onClick, ...other } = props;
+  const button = useRef<HTMLButtonElement>(null);
+
+  return (
+    <Button
+      type="button"
+      onClick={() => {
+    button.current!.style.color = '#70c67e';
+    button.current!.style.border = 'solid 1px #70c67e';
+    setTimeout(() => {
+      if (onClick) { onClick(); }
+      button.current!.style.color = '#9fb0c4';
+      button.current!.style.border = 'solid 1px #9fb0c4';
+    }, 300);
+      }}
+      {...other}
+      ref={button}
+    />
+  );
+};
 
 export default ChoiceButton;
