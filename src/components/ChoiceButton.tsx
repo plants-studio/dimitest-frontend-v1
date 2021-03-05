@@ -8,7 +8,7 @@ const Button = styled.button<ChoiceButtonProps>`
   border: solid 1px #9fb0c4;
   width: 100%;
   height: 50px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #9fb0c4;
   border-radius: 5px;
   font-family: 'NanumSquare';
