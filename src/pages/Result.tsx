@@ -18,6 +18,10 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 1024px) {
     background-size: 100% auto;
   }
+
+  @media only screen and (min-height: 1030px) {
+    height: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -58,6 +62,8 @@ const Name = styled.div`
   font-family: 'NEXON Football Gothic B';
   font-size: 1.875rem;
   margin-bottom: 32px;
+  word-break: keep-all;
+  text-align: center;
 `;
 
 const GraphSub = styled.div`
@@ -70,8 +76,9 @@ const Description = styled.div`
   font-family: 'NanumSquare';
   font-size: 0.875rem;
   margin-bottom: 52px;
-  word-break: keep-all;
+  white-space: pre;
   line-height: 1.2rem;
+  width: 100%;
 `;
 
 const SimilarSub = styled.div`
