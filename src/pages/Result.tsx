@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCookies } from 'react-cookie';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import KakaoShareButton from '../components/KakaoShareButton';
@@ -96,6 +97,14 @@ const Similar = styled.div`
   text-align: center;
 `;
 
+const ReStart = styled(Link)`
+  color: #9fb0c4;
+  font-fmaily: 'NanumSquare';
+  display: flex;
+  margin-bottom: 32px;
+  text-decoration: none;
+`;
+
 const Result: React.FC<ResultProps> = (props: ResultProps) => {
   const { match } = props;
   const [{ name, result }] = useCookies(['name', 'result']);
@@ -125,6 +134,10 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
         <Description>{resultData[match.params.tendency].description}</Description>
         <SimilarSub>나와 관련있는 다른 IT성향은?</SimilarSub>
         <Similar>{resultData[match.params.tendency].similar.join(', ')}</Similar>
+        <ReStart to="/">
+          <img src="/images/restart.png" alt="restart" />
+          다시하기
+        </ReStart>
         <KakaoShareButton name={name} tendency={match.params.tendency} />
       </Container>
     </Wrapper>

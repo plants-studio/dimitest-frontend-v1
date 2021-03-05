@@ -10,6 +10,7 @@ const Div = styled.div`
   text-align: center;
   word-break: keep-all;
   line-height: 1.65rem;
+  
 `;
 
 const Text: React.FC<TextProps> = (props: TextProps) => <Div {...props} />;
