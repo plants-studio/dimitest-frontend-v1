@@ -42,7 +42,7 @@ const KakaoShareButton: React.FC<KakaoShareButtonProps> = (props: KakaoShareButt
 
   return (
     <ChoiceButton style={{ marginBottom: '107px' }} id="kakao-link-btn">
-      내 친구들에게 결과 공유하기
+      카카오톡으로 결과 공유하기
     </ChoiceButton>
   );
 };
