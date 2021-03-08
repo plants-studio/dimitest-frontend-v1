@@ -155,7 +155,7 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
             document.location.href = 'https://open.kakao.com/me/command2021';
           }}
         >
-          익명으로 선배님과 상담해보기
+          궁금한 점 물어보기
         </ChoiceButton>
         <KakaoShareButton name={name} tendency={match.params.tendency} />
       </Container>
