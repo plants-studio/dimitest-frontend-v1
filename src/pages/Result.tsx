@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import ChoiceButton from '../components/ChoiceButton';
 import KakaoShareButton from '../components/KakaoShareButton';
 import RowBoxGraph from '../components/RowBoxGraph';
 import resultData from '../result.json';
@@ -140,6 +141,22 @@ const Result: React.FC<ResultProps> = (props: ResultProps) => {
           <img src="/images/restart.png" alt="restart" style={{ marginRight: '5px' }} />
           다시하기
         </ReStart>
+        <ChoiceButton
+          style={{ marginBottom: '1rem' }}
+          onClick={() => {
+            document.location.href = 'https://command.ne.kr';
+          }}
+        >
+          커맨드 동아리 살펴보기
+        </ChoiceButton>
+        <ChoiceButton
+          style={{ marginBottom: '1rem' }}
+          onClick={() => {
+            document.location.href = 'https://open.kakao.com/me/command2021';
+          }}
+        >
+          익명으로 선배님과 상담해보기
+        </ChoiceButton>
         <KakaoShareButton name={name} tendency={match.params.tendency} />
       </Container>
     </Wrapper>
