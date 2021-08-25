@@ -49,7 +49,7 @@ const Question: React.FC = () => {
       history.push('/');
       return;
     }
-    axios.post('https://api.dimitest.me/api/question/ch1').then((data) => {
+    axios.post('http://api.dimitest.me/api/question/ch1').then((data) => {
       questionList.current = data.data.data;
       setText(questionList.current[0].question);
       setAnswer(questionList.current[0].answer.map((v) => v.text));
@@ -110,7 +110,7 @@ const Question: React.FC = () => {
         if (chapter.current !== 5) {
           worked = true;
           axios
-            .post(`https://api.dimitest.me/api/question/ch${chapter.current}`, {
+            .post(`http://api.dimitest.me/api/question/ch${chapter.current}`, {
               result: result.current,
             })
             .then((data) => {
