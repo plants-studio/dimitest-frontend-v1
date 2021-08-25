@@ -127,7 +127,7 @@ const Question: React.FC = () => {
           result.current = [];
         } else {
           axios
-            .post('https://api.dimitest.me/api/question/result', {
+            .post('http://api.dimitest.me/api/question/result', {
               result: result.current,
               name,
               gender,
